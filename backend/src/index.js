@@ -2,6 +2,7 @@ import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
+import userRouter from "./routes/users.js";
 
 dotenv.config();
 
@@ -18,9 +19,7 @@ app.use(
 );
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send({ message: "Hello World!" });
-});
+app.use("/api/users", userRouter);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`server is running on port ${process.env.PORT || 3000}`);
