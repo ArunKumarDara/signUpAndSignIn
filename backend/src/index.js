@@ -2,7 +2,8 @@ import express, { urlencoded } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import mongoose from "mongoose";
-import userRouter from "./routes/users.js";
+import userRoutes from "./routes/users.js";
+import authRoutes from "./routes/auth.js";
 
 dotenv.config();
 
@@ -19,7 +20,8 @@ app.use(
 );
 app.use(cors());
 
-app.use("/api/users", userRouter);
+app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`server is running on port ${process.env.PORT || 3000}`);
